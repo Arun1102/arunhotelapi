@@ -6,6 +6,7 @@ const roomRoute =require("./routes/rooms.js");
 const hotelRoute =require("./routes/hotels.js");
 const usersRoute =require("./routes/users.js");
 const { default: mongoose } = require("mongoose");
+const cookie = require("cookie-parser"); //this one we use as middleware from the jsonwebtoken
 
 dotenv.config();
 
@@ -31,6 +32,9 @@ mongoose.connection.on("connected",()=>{
 });
 
 
+
+//MIDDLEWARE
+app.use(cookie());
 //WITHOUT THIS JSON CANNOT BE REQUEST.
 app.use(express.json());
 
