@@ -5,18 +5,18 @@ const router = express.Router();
 const Hotel = require("../models/hotel.js");
 // const { createError } = require("../utils/error.js");
 const {createHotel,updateHotel,deleteHotel,getHotel,getAllHotel} = require("../controllers/hotel.js");
-
+const {verifyToken,verifyAdmin,verifyUser} = require("../utils/verifytokem.js");
 
 
 //create method
-router.post("/",createHotel)
+router.post("/",verifyAdmin,createHotel)
 
 //update method
-router.put("/:id",updateHotel)
+router.put("/:id",verifyAdmin,updateHotel)
 
 //delete method
 
-router.delete("/:id",deleteHotel)
+router.delete("/:id",verifyAdmin,deleteHotel)
 //get method
 
 router.get("/:id",getHotel)
